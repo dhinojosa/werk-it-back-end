@@ -1,0 +1,66 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    labels:
+        app: werk-it-back-end-microservice
+        stack: frontend
+        source: demo
+    name: werk-it-back-end-microservice
+    namespace: microservices
+spec:
+    replicas: 5
+    selector:
+        matchLabels:
+            run: werk-it-back-end-microservice
+    template:
+        metadata:
+            labels:
+                app: werk-it-back-end-microservice
+                run: werk-it-back-end-microservice
+                source: demo
+        spec:
+            containers:
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/werk-it-back-end-microservice
+                    name: werk-it-back-end-microservice
+                    ports:
+                        -   name: web
+                            containerPort: 8080
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+    labels:
+        app: werk-it-back-end-microservice-service
+        stack: frontend
+    name: werk-it-back-end-microservice-service
+    namespace: microservices
+spec:
+    selector:
+        source: demo
+        app: werk-it-back-end-microservice
+    ports:
+        -   name: web
+            protocol: TCP
+            port: 30201
+            targetPort: 8080
+
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+    labels:
+        stack: frontend
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /$2
+    name: werk-it-back-end-ingress
+    namespace: microservices
+spec:
+    rules:
+        -   http:
+                paths:
+                    -   path: /werk-it-back-end(/|$)(.*)
+                        backend:
+                            serviceName: werk-it-back-end-microservice-service
+                            servicePort: 30201
