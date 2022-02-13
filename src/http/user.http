@@ -1,0 +1,43 @@
+POST http://localhost:8080/register
+Content-Type: application/json
+Accept-Type: application/json
+
+{
+    "email": "poll@aol.com",
+    "firstName": "Frank",
+    "lastName": "Lagresse",
+    "password": "Awmxs2221@!"
+}
+
+### Add an aerobics exercise
+POST http://localhost:8080/aerobics/user/1
+Content-Type: application/json
+Accept-Type: application/json
+
+{
+    "seconds": 3000,
+    "name": "sprints"
+}
+
+### Get all the aerobics per user
+GET http://localhost:8080/aerobics/user/1
+Accept-Type: application/json
+
+
+### Add an aerobics exercise
+POST http://localhost:8080/weights/user/1
+Content-Type: application/json
+Accept-Type: application/json
+
+{
+    "pounds": "40",
+    "reps": 20,
+    "sets": 2,
+    "name": "bench press"
+}
+
+### Get all the weights per user
+GET http://localhost:8080/weights/user/1
+Accept-Type: application/json
+
+
