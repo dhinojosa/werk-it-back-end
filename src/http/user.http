@@ -3,6 +3,7 @@ Content-Type: application/json
 Accept-Type: application/json
 
 {
+    "username": "position3",
     "email": "poll@aol.com",
     "firstName": "Frank",
     "lastName": "Lagresse",
@@ -25,7 +26,7 @@ Accept-Type: application/json
 
 
 ### Add an aerobics exercise
-POST http://localhost:8080/weights/user/1
+POST http://localhost:8080/weights/user/7
 Content-Type: application/json
 Accept-Type: application/json
 
@@ -39,5 +40,11 @@ Accept-Type: application/json
 ### Get all the weights per user
 GET http://localhost:8080/weights/user/1
 Accept-Type: application/json
+
+### Attempt a login, but fail
+GET http://localhost:8080/login/polis/epas
+
+### Attempt a login, and succeed
+GET http://localhost:8080/login/dhinojosa/30301133
 
 
