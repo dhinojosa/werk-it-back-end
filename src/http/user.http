@@ -1,32 +1,32 @@
 POST http://localhost:8080/register
 Content-Type: application/json
-Accept-Type: application/json
+Accept: application/json
 
 {
-    "username": "position3",
-    "email": "poll@aol.com",
-    "firstName": "Frank",
-    "lastName": "Lagresse",
-    "password": "Awmxs2221@!"
+    "username": "brenjanth4023",
+    "email": "brejanth@cgi.com",
+    "firstName": "Brenjanth",
+    "lastName": "Rajendran",
+    "password": "2Dextreme!"
 }
 
 ### Add an aerobics exercise
-POST http://localhost:8080/aerobics/user/1
+POST http://localhost:8080/aerobics/user/11
 Content-Type: application/json
 Accept-Type: application/json
 
 {
     "seconds": 3000,
-    "name": "sprints"
+    "name": "cycling"
 }
 
 ### Get all the aerobics per user
-GET http://localhost:8080/aerobics/user/1
+GET http://localhost:8080/aerobics/user/11
 Accept-Type: application/json
 
 
-### Add an aerobics exercise
-POST http://localhost:8080/weights/user/7
+### Add an weights exercise
+POST http://localhost:8080/weights/user/11
 Content-Type: application/json
 Accept-Type: application/json
 
@@ -47,4 +47,14 @@ GET http://localhost:8080/login/polis/epas
 ### Attempt a login, and succeed
 GET http://localhost:8080/login/dhinojosa/30301133
 
+### Add a weights exercise to staging
+POST http://staging.tiered-planet.net/werk-it-back-end/weights/user/1
+Content-Type: application/json
+Accept-Type: application/json
 
+{
+    "pounds": "40",
+    "reps": 20,
+    "sets": 2,
+    "name": "bench press"
+}
