@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: quarkus-config
+    namespace: microservices
+data:
+    quarkus.datasource.jdbc.url: jdbc:mysql://werkitdb-mysql.default.svc.cluster.local:3306/werkit
+    quarkus.http.cors.origins: 'http://staging.tiered-planet.net/werk-it'

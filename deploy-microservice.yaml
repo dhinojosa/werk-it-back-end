@@ -25,6 +25,28 @@ spec:
                     ports:
                         -   name: web
                             containerPort: 8080
+                    env:
+                        - name: quarkus.datasource.jdbc.url
+                          valueFrom:
+                              configMapKeyRef:
+                                  name: quarkus-config
+                                  key: quarkus.datasource.jdbc.url
+                        - name: quarkus.http.cors.origins
+                          valueFrom:
+                              configMapKeyRef:
+                                  name: quarkus-config
+                                  key: quarkus.http.cors.origins
+                        - name: quarkus.datasource.username
+                          valueFrom:
+                              secretKeyRef:
+                                  name: quarkus-secret
+                                  key: username
+                        - name: quarkus.datasource.password
+                          valueFrom:
+                              secretKeyRef:
+                                  name: quarkus-secret
+                                  key: password
+
 ---
 
 kind: Service
